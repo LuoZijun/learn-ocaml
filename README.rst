@@ -103,7 +103,7 @@ OCaml语言变量：
     let num = 10;;
     (* val num : int = 10  解释器输出 *)
 
-
+    val
 
 函数（Function）
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -126,6 +126,36 @@ OCaml语言变量：
 类(Class)
 ^^^^^^^^^^^^
 
+.. code:: ocaml
+    
+
+    (* 定义类 stack_of_ints *)
+    class stack_of_ints =
+        object (self)
+        val mutable the_list = ( [] : int list ) 
+        method push x =                        (* push 方法 *)
+            the_list <- x :: the_list
+        method pop =                           (* pop 方法 *)
+            let result = List.hd the_list in
+            the_list <- List.tl the_list;
+            result
+        method peek =                          (* peek 方法 *)
+            List.hd the_list
+        method size =                          (* size 方法 *)
+            List.length the_list
+        end;;
+
+    (* 实例 *)
+    let s = new stack_of_ints;;
+
+    (*  迭代 *)
+    for i = 1 to 10 do
+        s#push i
+        done;;
+    (* 循环 *)
+    while s#size > 0 do
+        Printf.printf "Popped %d off the stack.\n" s#pop
+        done;;
 
 对象(Object)
 ^^^^^^^^^^^^
