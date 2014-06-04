@@ -78,7 +78,7 @@ C语言注释 ：
 
 .. code:: ocaml
     
-    # let sum = 10;;
+    let sum = 10;;
 
 变量(Variables)
 ^^^^^^^^^^^^^^^
