@@ -17,7 +17,7 @@ OCaml语言简介
 
 官网：`OCaml <http://ocaml.org/>`_
 
-官方文档：`OCaml Docs <http://ocaml.org/docs/>`_    `Tutorials <http://ocaml.org/learn/tutorials>`_
+官方文档：`OCaml Docs <http://ocaml.org/docs/>`_    `Tutorials <http://ocaml.org/learn/tutorials>`_  ` OCaml Manual <http://caml.inria.fr/pub/docs/manual-ocaml/>`_
 
 
 在书籍资料方面，`京东（JD）书籍搜索 <http://search.jd.com/Search?keyword=ocaml&enc=utf-8>`_ 仅有三本该书的英文进口书籍，中文没有。所以打算学习此门语言的朋友要有阅读官方纯英文文档的准备（即便如此，官方文档也是极其简洁:P）。
