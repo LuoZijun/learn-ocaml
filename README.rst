@@ -39,7 +39,7 @@ OCaml语法篇
 
 注释（Comments）
 ####################
-OCaml的注释以 '(*' 开始至 '*)' 结束。类似与C语言的 //comments... 与/*comments...*/ 。
+OCaml的注释以 '(*' 开始至 '*)' 结束。类似与C语言的 //comments... 与/*comments...*/。
 
 缩进（Identifiers）
 ###############
