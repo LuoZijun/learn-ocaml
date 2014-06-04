@@ -42,6 +42,7 @@ OCaml语法篇
 OCaml的注释以 '(*' 开始至 '*)' 结束。类似与C语言的 //comments... 与\/*comments...*\/。
 
 OCaml 语言注释：
+
 .. code:: ocaml
 
     (* OCaml 语言单行注释 *)
@@ -52,7 +53,9 @@ OCaml 语言注释：
      *
      *)
 
+
 C语言注释 ：
+
 .. code:: c
     
     // C语言单行注释 
@@ -73,25 +76,32 @@ C语言注释 ：
 赋值(Values)
 ^^^^^^^^^^^^^^
 
+.. code:: ocaml
+    
+    # let sum = 10;;
+
 变量(Variables)
 ^^^^^^^^^^^^^^^
 引用： `Local "variables" <http://ocaml.org/learn/tutorials/structure_of_ocaml_programs.html>`_
 
 C 语言变量：
+
 .. code:: c
     
     double num = 10.12;
 
 Python语言变量：
+
 .. code:: python
     
-    var num = 10
+    num = 10
 
 OCaml语言变量：
+
 .. code:: ocaml
     
-    # let num = 10;;
-    val num : int = 10 (* 解释器输出 *)
+    let num = 10;;
+    (* val num : int = 10  解释器输出 *)
 
 
 
@@ -100,17 +110,17 @@ OCaml语言变量：
 
 .. code:: ocaml
     
-    # let sum a b = a + b;;                     (* 定义函数 sum *)
-    val sum : int -> int -> int = <fun>   (* 解释器输出 *)
-    # sum 10 20;;                                   (* 执行函数 sum  *)
-    - : int = 30                                          (* 运算结果 *)
+    let sum a b = a + b;;                     (* 定义函数 sum *)
+   (* val sum : int -> int -> int = <fun>    解释器输出 *)
+    sum 10 20;;                                   (* 执行函数 sum  *)
+    (* 运算结果： - : int = 30   *)                                        
 
 .. code:: python
     
     def sum(a,b):                                      # 定于函数
         return a+b                                               
     sum(10,20)                                          # 执行函数
-    30                                                         # 运算结果
+    # 运算结果 30                                                         
 
 
 类(Class)
