@@ -99,6 +99,7 @@ OCaml中的 unix接口模块是一个 包含了一些 unix* 特有特性的库�
 建立TCP监听
 ~~~~~~~~~~~~~~~~~~~
 
+.. code:: ocaml
 
 let server_address = hostinfo.Unix.h_addr_list.(0) in
         ignore (Unix.bind socket (Unix.ADDR_INET (server_address, port)));

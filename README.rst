@@ -12,15 +12,22 @@ Learn OCaml
 
 
 OCaml语言简介
------------------------------
-`OCaml <http://en.wikipedia.org/wiki/OCaml>`_  语言是一门多范式（指令式，函数式，面向对象）类型的语言，由作者 `INRIA <http://zh.wikipedia.org/wiki/INRIA>`_ 发行于1996年，目前最新版本为4.00.1/2012-10-05。
+--------------------------------
 
-官网：`OCaml <http://ocaml.org/>`_
+OCaml语言是一门多范式（指令式，函数式，面向对象）类型的语言，由作者  `INRIA <http://zh.wikipedia.org/wiki/INRIA>`_  发行于1996年，目前最新版本为4.01.0，于2012/10/05发布。
 
-官方文档：`OCaml Docs <http://ocaml.org/docs/>`_   |   `Tutorials <http://ocaml.org/learn/tutorials>`_   |  `OCaml Manual <http://caml.inria.fr/pub/docs/manual-ocaml/>`_
+官网站点： `OCaml <http://ocaml.org/>`_ 
 
+官方文档： `OCaml Docs <http://ocaml.org/docs/>`_   |   `Tutorials <http://ocaml.org/learn/tutorials>`_   |  `OCaml Manual <http://caml.inria.fr/pub/docs/manual-ocaml/>`_
 
-在书籍资料方面，`京东（JD）书籍搜索 <http://search.jd.com/Search?keyword=ocaml&enc=utf-8>`_ 仅有三本该书的英文进口书籍，中文没有。所以打算学习此门语言的朋友要有阅读官方纯英文文档的准备（即便如此，官方文档也是极其简洁:P）。
+维基百科： `OCaml Language <http://en.wikipedia.org/wiki/OCaml>`_
+
+在书籍资料方面， `京东（JD）书籍搜索 <http://search.jd.com/Search?keyword=ocaml&enc=utf-8>`_  仅有三本该书的英文进口书籍，中文没有。所以打算学习此门语言的朋友要有阅读官方纯英文文档的准备（即便如此，官方文档也是极其简洁:P）。
+
+    数据类型：http://blog.chinaunix.net/uid-10637191-id-2944892.html
+    
+    
+    入门整理：http://blog.csdn.net/xx_snoopy/article/details/4724770
 
 
 OCaml语言翻译
@@ -69,11 +76,11 @@ C语言注释 ：
     
 
 缩进（Identifiers）
-###############
+#############################
 
 
 保留字(Name)
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 *   value names (syntactic class value-name),
 *   value constructors and exception constructors (class constr-name),
 *   labels (label-name, defined in section 6.1),
@@ -87,14 +94,14 @@ C语言注释 ：
 *   module type names (modtype-name).
 
 赋值(Values)
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
 .. code:: ocaml
     
     let sum = 10;;
 
 变量(Variables)
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 引用： `Local "variables" <http://ocaml.org/learn/tutorials/structure_of_ocaml_programs.html>`_
 
 C 语言变量：
@@ -116,10 +123,12 @@ OCaml语言变量：
     let num = 10;;
     (* val num : int = 10  解释器输出 *)
 
-    val
+    
 
 函数（Function）
 ^^^^^^^^^^^^^^^^^^^^^^^^
+
+OCaml函数：
 
 .. code:: ocaml
     
@@ -127,6 +136,8 @@ OCaml语言变量：
    (* val sum : int -> int -> int = <fun>    解释器输出 *)
     sum 10 20;;                                   (* 执行函数 sum  *)
     (* 运算结果： - : int = 30   *)                                        
+
+Python函数：
 
 .. code:: python
     
@@ -156,19 +167,20 @@ OCaml语言变量：
             List.hd the_list
         method size =                          (* size 方法 *)
             List.length the_list
-        end;;
+    end;; (* 区段结束 *)
 
     (* 实例 *)
     let s = new stack_of_ints;;
 
     (*  迭代 *)
     for i = 1 to 10 do
-        s#push i
-        done;;
+        s#push i    (* s为 类stack_of_ints的实例，类方法操作符为 # ，i 为实例s的方法 push 的参数 x *)
+    done;;            (* 区段结束 *)
+    
     (* 循环 *)
     while s#size > 0 do
         Printf.printf "Popped %d off the stack.\n" s#pop
-        done;;
+    done;;  (* 区段结束 *)
 
 对象(Object)
 ^^^^^^^^^^^^
@@ -177,7 +189,8 @@ OCaml语言变量：
 
 OCaml语言执行效率
 ---------------------------------------
-博客阅读：`浅谈代码的执行效率（2）：编译器的威力 <http://www.cnblogs.com/JeffreyZhao/archive/2010/01/08/talk-about-code-performance-2-compiler.html>`_   作者： `赵劼 <http://www.cnblogs.com/JeffreyZhao/>`_
+
+博客阅读：`浅谈代码的执行效率（2）：编译器的威力 <http://www.cnblogs.com/JeffreyZhao/archive/2010/01/08/talk-about-code-performance-2-compiler.html>`_   （作者： `赵劼 <http://www.cnblogs.com/JeffreyZhao/>`_ ）
 
 **以下为原文引用：**
 
@@ -186,13 +199,13 @@ OCaml语言执行效率
 最后再举一个例子，便是Google工程师Mark Chu-Carroll在3年多前写的一篇文章《The “C is Efficient” Language Fallacy》，其中表示C/C++只是“最贴近CPU的语言”，但并非是进行科学计算时最高效的语言——甚至它们几乎不可能成为最高效的语言。这也是编译器的缘故，且看Mark列举了一小段代码：
 
 .. code:: c++
-
+    
     for (int i=0; i < 20000) {
         for (int j=0; j < 20000) {
             x[i][j] = y[i-2][j+1] * y[i+1][j-2];
         }
     }
-
+    
 
 这段代码进行的是两个数组的计算。此时C++编译器便会遇到一个叫做“别名检测（alias detection）”的问题，那就是C++编译器无法得知x和y两个数组的关系（试想如果它们是一个函数的两个参数，也就是说没有任何其他上下文信息），例如它们是不是同一个数组？是不是有重叠？要知道C++的数组访问只是基于下标地址配合偏移量的计算，因此x和y的内容完全可能出现重叠现象。于是C++编译器只能老老实实地按照高级代码的写法生成机器码，优化的余地并不大——这里由于语言特性而导致编译器无法进行更高级的优化，可谓是一个“硬伤”。
 
@@ -204,20 +217,22 @@ Mark表示，Fortran-77可以区分x和y两者是否相同，Fortran-98可以由
 *   Java：1分20秒。
 *   Python：超过5分钟。
 
-一年以后它使用最新的Java运行时，改进后的JIT只用了0.7秒便执行完了——当然还有额外的1秒用于启动JVM。在评论中Mark补充到，他是个严肃的C/C++程序员，并且已经尽他最大的努力来对C代码进行了优化。而当时他从来没有用过OCaml写过程序，更别说对OCaml代码进行一些取巧的优化方式了。至于OCaml高效的原因，他只是简单的提了一句，我也没有完全理解，便直接引用，不作翻译了::
+一年以后它使用最新的Java运行时，改进后的JIT只用了0.7秒便执行完了——当然还有额外的1秒用于启动JVM。在评论中Mark补充到，他是个严肃的C/C++程序员，并且已经尽他最大的努力来对C代码进行了优化。而当时他从来没有用过OCaml写过程序，更别说对OCaml代码进行一些取巧的优化方式了。至于OCaml高效的原因，他只是简单的提了一句，我也没有完全理解，便直接引用，不作翻译了：
 
     The results were extremely surprising to me, and I did spend some time profiling to try to figure out just why the OCaml was so much faster. The specific reason was that the Caml code did some really clever stuff - it basically did something like local constant propagation that were based on be able to identify relations between subscripts used to access different arrays, and having done that, it could do some dramatic code rewriting that made it possible to merge loops, and hoist some local constants out of the restructured merged loop.
 
 事实上，OCaml似乎的确是门了不起的语言，您可以在搜索引擎上使用“C++ OCaml Performance”作为关键字进行查找，可以找到很多性能比较的结果，以及OCaml编译优化方面的资料。自然，这些是题外话，您可以把它们作为扩展阅读用于“开阔视野”。我列举这个例子也不是为了说明C/C++的性能不够好，我这里谈的一切都是想说明一个问题：代码的执行效率并非能从字面上得出结论，更不是“简短”两个字能说明问题的。少一些赋值，少一些判断并非提高性能的正确做法，甚至您的手动优化会让编译器无法理解您的意图，进而无法进行有效的优化。如果您真想在细节上进行优化，还是进行Profiling之后，针对热点进行有效地优化吧。
 
+
 OCaml语言的应用
 ----------------------------------
-用OCaml写成的程序 `列表 <http://zh.wikipedia.org/wiki/OCaml#.E7.94.A8OCaml.E5.86.99.E6.88.90.E7.9A.84.E7.A8.8B.E5.BA.8F>`_ ：
+
+用OCaml写成的知名程序 `列表 <http://zh.wikipedia.org/wiki/OCaml#.E7.94.A8OCaml.E5.86.99.E6.88.90.E7.9A.84.E7.A8.8B.E5.BA.8F>`_ ：
 
 **一般用途**
 
 *   `MLDonkey <http://zh.wikipedia.org/wiki/MLDonkey>`_  - a multi-network P2P program
-*   Unison - a file synchronizer
+*   `Unison <http://www.cis.upenn.edu/~bcpierce/unison/>`_  - a file synchronizer
 
 **教育**
 
