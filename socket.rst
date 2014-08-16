@@ -101,13 +101,13 @@ OCaml中的 unix接口模块是一个 包含了一些 unix* 特有特性的库�
 
 .. code:: ocaml
 
-let server_address = hostinfo.Unix.h_addr_list.(0) in
-        ignore (Unix.bind socket (Unix.ADDR_INET (server_address, port)));
-        Unix.listen socket 10;
-        while true do 
-            let (fd, _) = Unix.accept socket in
-            let _ = set_nonblock fd in 
-            let ins = readall fd in
-                ignore (writeall fd (fn ins));
-                Unix.close fd
-        done
+    let server_address = hostinfo.Unix.h_addr_list.(0) in
+            ignore (Unix.bind socket (Unix.ADDR_INET (server_address, port)));
+            Unix.listen socket 10;
+            while true do 
+                let (fd, _) = Unix.accept socket in
+                let _ = set_nonblock fd in 
+                let ins = readall fd in
+                    ignore (writeall fd (fn ins));
+                    Unix.close fd
+            done
