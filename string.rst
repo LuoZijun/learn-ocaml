@@ -106,6 +106,8 @@ struct … end 中的语句。
 
 .. code:: ocaml
 
-    module type T =  sig    type t    val x : t    val g : t -> t  end;;  module M = functor (X : T) ->  struct    type u = X.t * X.t    let y = X.g (X.x)  endmodule S1 =  struct    type t = int    let x 
+    module type T =  sig    type t    val x : t    val g : t -> t  end;;
+    module M = functor (X : T) ->  struct    type u = X.t * X.t    let y = X.g (X.x)  end;;
+    module S1 =  struct    type t = int    let x 
 
 
